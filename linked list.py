@@ -27,6 +27,7 @@ def printll(x):
     while x is not None:
         print(str(x.data) + '-:>', end=" ")
         x= x.next
+    print(None)
     return 
 
 head = inputlist()
