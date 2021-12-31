@@ -20,10 +20,10 @@ def insertinglist():
     return head
 
 def findnode(head,n):
-    if head == n:
-        return 0
     if head is None:
         return -1
+    if head.data == n:
+        return 0
     find = findnode(head.next,n)
     if find== -1:
         return -1
