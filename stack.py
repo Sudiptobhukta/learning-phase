@@ -1,12 +1,9 @@
-from stackintro import stack
-s = stack()
-s.push(14)
-s.push(15)
-s.push(20)
-s.push(45)
+from stackintro import stackcheck
 
-while s.isEmpty is False:
+s = stackcheck()
+s.push(34)
+s.push(53)
+s.push(12)
+while s.isEmpty() is False:
     print(s.pop())
-
-
 s.top()
