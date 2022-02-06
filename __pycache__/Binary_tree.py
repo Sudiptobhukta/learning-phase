@@ -1,4 +1,6 @@
+from os import remove
 from tkinter.messagebox import NO
+from xml.etree.ElementInclude import DEFAULT_MAX_INCLUSION_DEPTH
 
 
 class binarytree:
@@ -129,14 +131,47 @@ def depth2(root,k,d):
     depth2(root.left,k,d+1)
     depth2(root.right,k,d+1)
 
+# removes the leaf nodes
+
+def removeleaf(root):
+    if root == None:
+        return None
+    if root.left is None and root.right is None:
+        return None
+    root.left = removeleaf(root.left)
+    root.right = removeleaf(root.right)
+    return root
+
+#mirroring the Tree
+
+def mirror(root):
+    if root == None:
+        return -1
+    left = mirror(root.left)
+    right = mirror(root.right)
+    temp= left
+    root.left = right
+    root.right = temp
+    return root
+
 root = inputree()
 detailprint(root)
 numnode(root)
 postorder(root)
 print()
-print(largestdata(root))
-print(largestx(root,3))
-print(height(root))
-print(numb(root))
+print(largestdata(root) , "This is the largest number in the Tree")
+print(largestx(root,3), "This is the largest numbers than x")
+print(height(root), " This is the height of the tree ")
+print(numb(root), " This is the total number of tree")
+print("This is the depth of the tree in the first method" , end=" ")
 depth1(root,2)
+print()
+print("This the depth of the tree in the second method",end=" ")
 depth2(root,2,0)
+print()
+print("This is the Tree after removing the leafs of the tree")
+removeleaf(root)
+detailprint(root)
+print("this is Tree after the mirroring of the Tree")
+mirror(root)
+detailprint(root)
